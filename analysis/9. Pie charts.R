@@ -33,32 +33,32 @@ bp
 pie <- bp + coord_polar("y", start=0)
 pie + blank_theme + scale_fill_manual(values=c("#d11141", "#00b159", "#00aedb", "#f37735", "#ffc425", "#cccccc", "#8c8c8c")) + theme(axis.text.x=element_blank())
 
-ggsave('/Users/Sanne/Documents/GitHub/CSV/final/education.png')
+ggsave('education.png')
 
 plot_cols <- function(...) {
   cols <- c(...)
-  
+
   if (is.null(cols))
     return (plot_colors)
-  
+
   plot[cols]
 }
 
 custom_palettes <- list(`mixed` = )
 
-mytable <- table(total$education)
-lbls <- paste(names(mytable), "\n", mytable, sep="")
-pie(mytable, 
+data_table <- table(total$education)
+lbls <- paste(names(data_table), "\n", data_table, sep="")
+pie(data_table,
     main="Education", col=terrain.colors(length(unique(total$education))))
 
-mytable <- table(total$education)
-lbls <- paste(names(mytable), "\n", mytable, sep="")
-pie(mytable, 
+data_table <- table(total$education)
+lbls <- paste(names(data_table), "\n", data_table, sep="")
+pie(data_table,
     main="education", col=terrain.colors(length(unique(total$education))))
 
-mytable <- table(total$education)
-lbls <- paste(names(mytable), "\n", mytable, sep="")
-pie(mytable, 
+data_table <- table(total$education)
+lbls <- paste(names(data_table), "\n", data_table, sep="")
+pie(data_table,
     main="education", col=terrain.colors(length(unique(total$education))))
 
-write.csv(total, "/Users/Sanne/Documents/GitHub/CSV/final/total.csv")
+write.csv(total, "total.csv")

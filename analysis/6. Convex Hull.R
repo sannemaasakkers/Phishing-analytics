@@ -1,4 +1,4 @@
-results <- read.csv("/Users/Sanne/Documents/GitHub/CSV/28-07-2018/results.csv")
+results <- read.csv("results.csv")
 
 x <- results$mouseX[results$unique_id == 'P30' & results$site == 'phishing']
 y <- results$mouseY[results$unique_id == 'P30' & results$site == 'phishing']
@@ -9,7 +9,7 @@ conHull <- rbind(dataframe[conHullPosition,],dataframe[conHullPosition[1],])
 # plot(Y ~ X, data = dataframe, xlim=c(0, max(x)), ylim=c(max(y),0))
 # lines(conHull)
 
-# write.csv(results, file = "/Users/Sanne/Documents/GitHub/CSV/28-07-2018/results.csv")
+# write.csv(results, file = "results.csv")
 
 amplitude <- 0
 
@@ -25,8 +25,7 @@ for(i in 1:nrow(conHull)) {
     if(result > amplitude) {
       amplitude <- result
     }
-  } 
+  }
 }
 
 round(amplitude)
-

@@ -1,6 +1,4 @@
-results <- read.csv("/Users/Sanne/Documents/GitHub/CSV/28-07-2018/results.csv")
-
-
+results <- read.csv("results.csv")
 
 sampleFreq <- cbind(results)
 
@@ -42,6 +40,4 @@ sd_axis_bounds = 5
 axis_bounds <- seq(-sd_axis_bounds * sampleFreqSD + sampleFreqMean, sd_axis_bounds * sampleFreqSD + sampleFreqMean, by = sampleFreqSD)
 axis(side = 1, at = axis_bounds, pos = 0)
 
-
 round(1000 / min(sampleFreq$diffTimestamp[sampleFreq$unique_id == 'P29']))
-

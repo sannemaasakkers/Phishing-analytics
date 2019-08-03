@@ -1,14 +1,14 @@
 pageMotion <- data.frame(unique_id=character(60),
                           site=character(60),
                           time=character(60),
-                          stringsAsFactors=FALSE) 
+                          stringsAsFactors=FALSE)
 
 for(p in unique(results$unique_id))
 {
   for(s in results$site[results$unique_id == p])
   {
     result <- 0
-    
+
     for(i in results$page[results$unique_id == p & results$site == s])
     {
       if(i != 440 & i != 649 & i != 650 & i != 651) {
@@ -26,7 +26,7 @@ pageMotion2 <- data.frame(unique_id=character(60),
                          site=character(60),
                          page=character(60),
                          time=character(60),
-                         stringsAsFactors=FALSE) 
+                         stringsAsFactors=FALSE)
 r <- 1
 
 for(r in 1:length(unique(results$page) - 2))
@@ -34,7 +34,7 @@ for(r in 1:length(unique(results$page) - 2))
   if(r != 440 & r != 649 & r != 650 & r != 651)
   {
     result <- max(results$timestamp[results$page == r]) - min(results$timestamp[results$page == r])
-    
+
     pageMotion2$unique_id <- unique(results$unique_id[results$page == r])
     pageMotion2$site <- unique(results$site[results$page == r])
     pageMotion2$page <- r

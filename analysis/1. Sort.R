@@ -1,5 +1,9 @@
 library(dplyr)
+library(plotly)
 library(plyr)
+require(data.table)
+library(grDevices)
+library(mousetrack)
 
 clicks <- read.csv(file="clicks.csv", header=TRUE, sep=";")
 moves <- read.csv(file="moves.csv", header=TRUE, sep=";")
@@ -68,3 +72,7 @@ moves <- arrange(moves, moves$unique_id, moves$site, moves$page, moves$timestamp
 moves$diffTimestamp <- ave(moves$timestamp, factor(moves$unique_id), FUN=function(x) c(NA,diff(x)))
 
 moves$diffTimestamp[moves$diffTimestamp < 0] <- 0
+
+results <- merge(moves, users, by="unique_id")
+results <- merge(results, clicks, by="unique_id")
+results <- merge(results, keys, by="unique_id")
